@@ -583,6 +583,10 @@ h6 {
   padding: 50px 0px 5px 0px;
 }
 
+.buy__container {
+  max-width: 990px;
+}
+
 .buy__title {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -612,8 +616,8 @@ h6 {
   padding: 0px 22.5px;
   margin: 0px 0px 45px 0px;
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
+      -ms-flex: 0 0 33.3333%;
+          flex: 0 0 33.3333%;
 }
 
 .buy__content-colum-items {
@@ -643,6 +647,7 @@ h6 {
 
 .buy__content-colum-items-list {
   margin: 0px 0px 19px 0px;
+  list-style-position: inside;
 }
 
 .buy__content-colum-items-item {
@@ -665,6 +670,25 @@ h6 {
   display: block;
   border-radius: 5px;
   margin: 0px -20px;
+  border: 1px solid transparent;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.buy__content-colum-items-btn a:hover {
+  background-color: #445161;
+  color: white;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  border: 1px solid white;
+}
+
+.buy__content-colum-items-btn a:active {
+  -webkit-transform: scale(0.97);
+      -ms-transform: scale(0.97);
+          transform: scale(0.97);
 }
 
 @media (max-width: 1024.98px) {
