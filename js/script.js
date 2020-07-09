@@ -1,44 +1,47 @@
-$("input[data-value], textarea[data-value]").each(function () {
-  if (this.value == "" || this.value == $(this).attr("data-value")) {
-    if ($(this).hasClass("l") && $(this).parent().find(".form__label").length == 0) {
-      $(this)
-        .parent()
-        .append('<div class="form__label">' + $(this).attr("data-value") + "</div>");
-    } else {
-      this.value = $(this).attr("data-value");
-    }
-  }
-  if (this.value != $(this).attr("data-value") && this.value != "") {
-    $(this).addClass("focus");
-    $(this).parent().addClass("focus");
-    if ($(this).hasClass("l") && $(this).parent().find(".form__label").length == 0) {
-      $(this)
-        .parent()
-        .append('<div class="form__label">' + $(this).attr("data-value") + "</div>");
-    }
-  }
+//! ================Клик вне области +  class
 
-  $(this).click(function () {
-    if (this.value == $(this).attr("data-value")) {
-      if ($(this).attr("data-type") == "pass") {
-        $(this).attr("type", "password");
-      }
-      this.value = "";
-    }
-  });
-  $(this).blur(function () {
-    if (this.value == "") {
-      if (!$(this).hasClass("l")) {
-        this.value = $(this).attr("data-value");
-      }
-      $(this).removeClass("focus");
-      $(this).parent().removeClass("focus");
-      if ($(this).attr("data-type") == "pass") {
-        $(this).attr("type", "text");
-      }
-    }
-    if ($(this).hasClass("vn")) {
-      formValidate($(this));
-    }
-  });
+const btnMenu = document.querySelector(".");
+const menu = document.querySelector(".");
+const toggleMenu = function () {
+  menu.classList.toggle("open");
+};
+
+btnMenu.addEventListener("click", function (e) {
+  e.stopPropagation();
+  toggleMenu();
 });
+
+document.addEventListener("click", function (e) {
+  const target = e.target;
+  const its_menu = target == menu || menu.contains(target);
+  const its_btnMenu = target == btnMenu;
+  const menu_is_active = menu.classList.contains("open");
+
+  if (!its_menu && !its_btnMenu && menu_is_active) {
+    toggleMenu();
+  }
+});
+
+//! =============================menu burger
+
+let iconMenu = document.querySelector(".icon-menu");
+let body = document.querySelector("body");
+let menuBody = document.querySelector(".menu__body");
+if (iconMenu) {
+  iconMenu.addEventListener("click", function () {
+    iconMenu.classList.toggle("active");
+    body.classList.toggle("lock");
+    menuBody.classList.toggle("active");
+  });
+}
+
+//! ===============================function ibg()
+function ibg() {
+  $.each($(".ibg"), function (index, val) {
+    if ($(this).find("img").length > 0) {
+      $(this).css("background-image", 'url("' + $(this).find("img").attr("src") + '")');
+    }
+  });
+}
+
+ibg();
